@@ -9077,6 +9077,11 @@ react-app-polyfill@^2.0.0:
     regenerator-runtime "^0.13.7"
     whatwg-fetch "^3.4.1"
 
+react-cssfx-loading@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-cssfx-loading/-/react-cssfx-loading-1.0.0.tgz#280e9c4c42459ff86f1132799a973f3d527dd75b"
+  integrity sha512-zFGsfAmSypMuXswyV+BdiJzy6N9d83VK3KTNDPBvXfxPKG/yXzHdvFEWU1dRCRxmEZuWs/h/bJQhQxYfLWjlcA==
+
 react-dev-utils@^11.0.3:
   version "11.0.4"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-11.0.4.tgz#a7ccb60257a1ca2e0efe7a83e38e6700d17aa37a"

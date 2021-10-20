@@ -10,17 +10,13 @@ const axiosClient = axios.create({
     },
     paramsSerializer: (params) => {
         console.log(
-            queryString.stringify({ ...params, api_key: apiConfig.apiKey }),
+            queryString.stringify({ ...params, api_key: apiConfig.apiKey })
         );
         return queryString.stringify({ ...params, api_key: apiConfig.apiKey });
     },
 });
 
-axiosClient.interceptors.request.use(async (config) => {
-    console.log(config);
-
-    return config;
-});
+axiosClient.interceptors.request.use(async (config) => config);
 
 axiosClient.interceptors.response.use(
     (response) => {
@@ -31,7 +27,7 @@ axiosClient.interceptors.response.use(
     },
     (error) => {
         throw error;
-    },
+    }
 );
 
 export default axiosClient;

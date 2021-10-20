@@ -1,0 +1,6 @@
+{
+    "javascript.inlayHints.parameterNames.enabled": "all",
+    "typescript.inlayHints.parameterNames.enabled": "literals",
+    "editor.inlayHints.fontFamily": "Fira Code, Roboto Mono, monospace",
+    "javascript.inlayHints.parameterNames.suppressWhenArgumentMatchesName": false
+}
