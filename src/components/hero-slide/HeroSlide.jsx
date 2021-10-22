@@ -25,7 +25,7 @@ function HeroSlide() {
                     movieType.popular,
                     { params }
                 );
-                setMovieItems(response.results.slice(1, 4));
+                setMovieItems(response.results.slice(0, 4));
                 console.log(response.results.slice(0, 4));
             } catch {
                 console.log('error');

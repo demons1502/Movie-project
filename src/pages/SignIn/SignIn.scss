@@ -1,0 +1,73 @@
+@use '../../scss/' as *;
+
+.sign_in-form {
+    background-color: $white;
+    width: 35%;
+    height: 400px;
+    border-radius: 5px;
+    margin: 0 auto;
+    padding: 50px 0px;
+    box-shadow: $box-shadow-white;
+
+    @include tablet {
+        width: 60%;
+    }
+
+    @include mobile {
+    }
+
+    h3 {
+        color: $white;
+        margin-bottom: 50px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 20px 10px;
+        border-radius: 10px;
+        width: 80%;
+        background-color: $black;
+    }
+
+    form {
+        @include flex(center, center);
+        flex-direction: column;
+
+        .actions {
+            @include flex(space-between, center);
+
+            & > * ~ * {
+                margin-left: 2rem;
+            }
+        }
+    }
+
+    &__control {
+        @include flex(center, center);
+        padding-bottom: 2rem;
+
+        & > * ~ * {
+            margin-left: 2rem;
+        }
+
+        label {
+            color: $black;
+            font-weight: 700;
+            width: 70px;
+        }
+
+        input {
+            border-radius: 5px;
+            line-height: 1.8;
+            font-weight: 700;
+
+            &.blur {
+                border: 1px solid $main-color;
+                color: $black;
+                background-color: $white;
+            }
+
+            @include mobile {
+                width: 100px;
+            }
+        }
+    }
+}
