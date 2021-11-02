@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './MovieCard.scss';
 
@@ -6,26 +6,34 @@ import { Link } from 'react-router-dom';
 
 import Button from '../button/Button';
 
-import { category } from '../../api/tmdbApi';
+import tmdbApi, { category } from '../../api/tmdbApi';
 import apiConfig from '../../api/apiConfig';
 const MovieCard = (props) => {
+    const [movie, setMovie] = useState({});
     const item = props.item;
 
-    const link = '/' + category[props.category] + '/' + item.id;
+    const link = '/' + category[props.category] + '/' + item;
 
-    const bg = apiConfig.w500Image(item.poster_path || item.backdrop_path);
+    useEffect(() => {
+        const getMovie = async () => {
+            const res = await tmdbApi.getMovie(item);
+            console.log(res.data);
+            setMovie(res.data);
+        };
+        getMovie();
+    }, [item]);
 
     return (
         <Link to={link}>
             <div
                 className='movie-card'
-                style={{ backgroundImage: `url(${bg})` }}
+                style={{ backgroundImage: `url(${movie.img})` }}
             >
                 <Button>
                     <i className='bx bx-play'></i>
                 </Button>
             </div>
-            <h3>{item.title || item.name}</h3>
+            <h3>{movie.title}</h3>
         </Link>
     );
 };

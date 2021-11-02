@@ -12,17 +12,17 @@ import Footer from './components/footer/Footer';
 import Routes from './config/Routes';
 
 function App() {
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(false);
 
-    useEffect(() => {
-        const a = setTimeout(() => {
-            setLoading(false);
-        }, 1000);
+    // useEffect(() => {
+    //     const a = setTimeout(() => {
+    //         setLoading(false);
+    //     }, 1000);
 
-        return function cleanup() {
-            clearTimeout(a);
-        };
-    }, []);
+    //     return function cleanup() {
+    //         clearTimeout(a);
+    //     };
+    // }, []);
 
     return (
         <>

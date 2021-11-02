@@ -19,11 +19,13 @@ function HeroSlide() {
 
     useEffect(() => {
         const getMovies = async () => {
-            const params = { page: 1, language: 'en' };
+            const params = {};
             try {
                 const response = await tmdbApi.getMoviesList(
                     movieType.popular,
-                    { params }
+                    {
+                        params,
+                    }
                 );
                 setMovieItems(response.results.slice(0, 4));
                 console.log(response.results.slice(0, 4));

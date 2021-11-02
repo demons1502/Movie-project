@@ -1,5 +1,7 @@
 import axiosClient from './axiosClient';
 
+import axios from 'axios';
+
 export const category = {
     movie: 'movie',
     tv: 'tv',
@@ -18,6 +20,46 @@ export const tvType = {
 };
 
 const tmdbApi = {
+    getRandomLists: async (type, genre) => {
+        let res = null;
+        try {
+            res = await axios.get(`lists?type=${type}&genre=${genre}`, {
+                headers: {
+                    token: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzdjNzlkMDE2MWJiMTM0MDkxNzkyOCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzNTI0MDY2MSwiZXhwIjoxNjM1NjcyNjYxfQ.DA1c467jpZ7u1nTmE3_pXN3GdRR2HobiTfbd-YNQBm8',
+                },
+            });
+            // console.log(res.data);
+        } catch (err) {
+            console.log(err);
+        }
+        return res;
+    },
+    getMovie: async (item) => {
+        let res = null;
+        try {
+            res = await axios.get('/movies/find/' + item, {
+                headers: {
+                    token: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzdjNzlkMDE2MWJiMTM0MDkxNzkyOCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzNTI0MDY2MSwiZXhwIjoxNjM1NjcyNjYxfQ.DA1c467jpZ7u1nTmE3_pXN3GdRR2HobiTfbd-YNQBm8',
+                },
+            });
+        } catch (error) {
+            console.log(error);
+        }
+        return res;
+    },
+    getAll: async () => {
+        let res = null;
+        try {
+            res = await axios.get('/', {
+                headers: {
+                    token: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzdjNzlkMDE2MWJiMTM0MDkxNzkyOCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTYzNTI0MDY2MSwiZXhwIjoxNjM1NjcyNjYxfQ.DA1c467jpZ7u1nTmE3_pXN3GdRR2HobiTfbd-YNQBm8',
+                },
+            });
+        } catch (error) {
+            console.log(error);
+        }
+        return res;
+    },
     getMoviesList: (type, params) => {
         const url = 'movie/' + movieType[type];
         return axiosClient.get(url, params);

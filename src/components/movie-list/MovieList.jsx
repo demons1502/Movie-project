@@ -10,38 +10,44 @@ import MovieCard from '../movie-card/MovieCard';
 import tmdbApi, { category } from '../../api/tmdbApi';
 
 const MovieList = (props) => {
-    const [items, setItems] = useState([]);
+    console.log(props.list);
+    // console.log(123);
+    // const [items, setItems] = useState([]);
 
-    useEffect(() => {
-        const getList = async () => {
-            let response = null;
-            const params = {};
+    // useEffect(() => {
+    //     const getList = async () => {
+    //         let lists = null;
+    //         // const params = {};
 
-            if (props.type !== 'similar') {
-                switch (props.category) {
-                    case category.movie:
-                        response = await tmdbApi.getMoviesList(props.type, {
-                            params,
-                        });
-                        break;
-                    default:
-                        response = await tmdbApi.getTvList(props.type, {
-                            params,
-                        });
-                        break;
-                }
-            } else {
-                response = await tmdbApi.similar(props.category, props.id);
-            }
-            setItems(response.results);
-        };
-        getList();
-    }, [props.type, props.id, props.category]);
+    //         lists = await tmdbApi.getRandomLists();
+
+    //         // if (props.type !== 'similar') {
+    //         //     switch (props.category) {
+    //         //         case category.movie:
+    //         //             response = await tmdbApi.getMoviesList(props.type, {
+    //         //                 params,
+    //         //             });
+    //         //             break;
+    //         //         default:
+    //         //             response = await tmdbApi.getTvList(props.type, {
+    //         //                 params,
+    //         //             });
+    //         //             break;
+    //         //     }
+    //         // } else {
+    //         //     response = await tmdbApi.similar(props.category, props.id);
+    //         // }
+    //         // setItems(response.results);
+    //         console.log(lists.data);
+    //         setItems(lists.data);
+    //     };
+    //     getList();
+    // }, []);
 
     return (
         <div className='movie-list'>
             <Swiper grabCursor={true} spaceBetween={10} slidesPerView={'auto'}>
-                {items.map((item, index) => (
+                {props.list.content.map((item, index) => (
                     <SwiperSlide key={index}>
                         <MovieCard
                             item={item}
@@ -54,9 +60,9 @@ const MovieList = (props) => {
     );
 };
 
-MovieList.propTypes = {
-    category: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-};
+// MovieList.propTypes = {
+//     category: PropTypes.string.isRequired,
+//     type: PropTypes.string.isRequired,
+// };
 
 export default MovieList;
